@@ -1,0 +1,6 @@
+---
+- name: run the ansibleDB role
+  hosts: ansibledb
+  become: true
+  roles:
+    - setup_ansibledb

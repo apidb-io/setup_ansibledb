@@ -1,0 +1,21 @@
+---
+- name: start and enable docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: setup symlink
+  file:
+    src: /usr/local/bin/docker-compose
+    dest: /usr/bin/docker-compose
+    state: link
+
+- name: add content to docker-compose file
+  template:
+    src: templates/docker-compose.yml.j2
+    dest: /opt/docker-compose.yml
+    mode: 0755
+
+- name: docker-dompose up
+  command: docker-compose --project-directory /opt up -d

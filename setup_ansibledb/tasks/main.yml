@@ -1,0 +1,17 @@
+---
+- name: loop of tasks to complete
+  include_tasks: "{{ custom_tasks }}"
+  loop:
+    - download.yml
+    - install.yml
+    - configure.yml
+#    - start.yml
+  loop_control:
+    loop_var: custom_tasks
+
+#- name: download required files
+#- name: install require packages
+#- name: start and enable docker
+#- name: symlink docker-compose
+#- name: add the contents of docker-compose.yml
+#- name: docker compose up
