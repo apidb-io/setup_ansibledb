@@ -4,12 +4,11 @@ This role will install all the required packages and setup all the configuration
 ## Quick Start
 
 ````
-git clone ...
+git clone https://github.com/dmccuk/setup_ansibledb.git
 cd setup_ansibledb
 ````
 
   * Create your inventory
-  * create your deploy.yml
 
 #### Example Inventory
 ````
@@ -21,6 +20,8 @@ ansible_connection=ssh
 ansible_user=ec2-user
 ansible_ssh_private_key_file=~/.ssh/working.pem
 ````
+
+  * create your deploy.yml
 
 #### example deploy.yml
 ````
@@ -84,12 +85,12 @@ $ sudo netstat -tnlp
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
 tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1092/sshd
-tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN      29875/docker-proxy
+tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN      29875/docker-proxy    <<--- :443
 tcp        0      0 0.0.0.0:27017           0.0.0.0:*               LISTEN      29891/docker-proxy
 tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      19877/nginx: master
 tcp6       0      0 :::21                   :::*                    LISTEN      18381/vsftpd
 tcp6       0      0 :::22                   :::*                    LISTEN      1092/sshd
-**tcp6       0      0 :::443                  :::*                    LISTEN      29880/docker-proxy**
+tcp6       0      0 :::443                  :::*                    LISTEN      29880/docker-proxy    <<--- :443
 tcp6       0      0 :::27017                :::*                    LISTEN      29895/docker-proxy
 tcp6       0      0 :::80                   :::*                    LISTEN
 ````
